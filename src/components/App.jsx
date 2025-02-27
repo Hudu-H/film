@@ -4,13 +4,16 @@ import { CssBaseline } from '@mui/material';
 
 // internal components
 import { Actors, MovieInformation, Movies, Profile, NavBar } from './';
+import useStyles from './styles';
 
 const App = () => {
+	const classes = useStyles();
 	return (
-		<div>
+		<div className={classes.root}>
 			<CssBaseline />
 			<NavBar />
-			<main>
+			<main className={classes.content}>
+				<div className={classes.toolbar} />
 				<Routes>
 					<Route path="/" exact element={<Movies />} />
 					<Route path="/movie/:id" exact element={<MovieInformation />} />
