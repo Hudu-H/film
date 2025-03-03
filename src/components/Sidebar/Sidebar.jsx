@@ -40,7 +40,7 @@ const demoCategories = [
 	},
 	{
 		lable: 'Horror',
-		value: 'horro',
+		value: 'horror',
 	},
 	{
 		lable: 'Comedy',

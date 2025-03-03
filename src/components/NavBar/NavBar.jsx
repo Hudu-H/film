@@ -10,10 +10,10 @@ import { Sidebar } from '..';
 
 const NavBar = () => {
 	const [mobileOpen, setMobileOpen] = useState(false);
-	const classes = useStyles();
 	const isMobile = useMediaQuery('(max-width:600px)');
 	const theme = useTheme();
 	const isAuthenticated = true;
+	const classes = useStyles();
 
 	return (
 		<>
