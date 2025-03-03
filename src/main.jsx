@@ -6,6 +6,7 @@ import { createTheme, ThemeProvider } from '@mui/material';
 //internal modules
 import App from './components/App';
 
+//define theme
 const theme = createTheme({});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
