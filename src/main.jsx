@@ -2,18 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material';
+import { Provider } from 'react-redux';
 
 //internal modules
 import App from './components/App';
+import store from './app/store';
 
 //define theme
 const theme = createTheme({});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-	<ThemeProvider theme={theme}>
-		<BrowserRouter>
-			<App />
-		</BrowserRouter>
-	</ThemeProvider>
+	<Provider store={store}>
+		<ThemeProvider theme={theme}>
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
+		</ThemeProvider>
+	</Provider>
 );

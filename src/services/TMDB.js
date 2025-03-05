@@ -1,0 +1,12 @@
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
+// TMBD KEY
+const tmdbApiKey = process.env.TMDB_KEY;
+// https://api.themoviedb.org/3/movie/popular
+
+export const tmdbApi = createApi({
+	reducerPath: 'tmdbApi',
+	baseQuery: fetchBaseQuery({
+		baseUrl: '',
+	}),
+});
