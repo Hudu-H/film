@@ -3,6 +3,7 @@ import Grid2 from '@mui/material/Grid2';
 
 // internal imports
 import useStyles from './styles';
+import { Movie } from '..';
 
 const MovieList = ({ movies }) => {
 	const classes = useStyles();
