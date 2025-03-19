@@ -1,3 +1,4 @@
+// review useFffect hook or remove later
 import React, { useEffect } from 'react';
 import {
 	List,
@@ -52,6 +53,7 @@ const demoCategories = [
 	},
 ];
 
+// sidebar comp
 const Sidebar = ({ setMobileOpen }) => {
 	const theme = useTheme();
 	const classes = useStyles();
@@ -70,7 +72,7 @@ const Sidebar = ({ setMobileOpen }) => {
 				<ListSubheader>Categories</ListSubheader>
 				{categories.map(({ lable, value }) => (
 					<Link key={value} className={classes.links} to="/">
-						<ListItem onClick={() => setMobileOpen(false)} button>
+						<ListItem onClick={() => {}} button>
 							{/* <ListItemIcon>
 								<img src={redLogo} height={30} className={classes.genreImage} />
 							</ListItemIcon> */}
@@ -84,7 +86,7 @@ const Sidebar = ({ setMobileOpen }) => {
 				<ListSubheader>Genres</ListSubheader>
 				{demoCategories.map(({ lable, value }) => (
 					<Link key={value} className={classes.links} to="/">
-						<ListItem onClick={() => setMobileOpen(false)} button>
+						<ListItem onClick={() => {}} button>
 							{/* <ListItemIcon>
 								<img src={redLogo} height={30} className={classes.genreImage} />
 							</ListItemIcon> */}
