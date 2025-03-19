@@ -1,3 +1,4 @@
+// review useFffect hook or remove later
 import React, { useEffect } from 'react';
 import {
 	List,
@@ -52,6 +53,7 @@ const demoCategories = [
 	},
 ];
 
+// sidebar comp
 const Sidebar = ({ setMobileOpen }) => {
 	const theme = useTheme();
 	const classes = useStyles();

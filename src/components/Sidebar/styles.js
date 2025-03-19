@@ -1,5 +1,6 @@
 import { makeStyles } from '@mui/styles';
 
+// define use styles for sidebar comp
 export default makeStyles((theme) => ({
 	imageLink: {
 		display: 'flex',

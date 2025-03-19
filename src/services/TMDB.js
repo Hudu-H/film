@@ -1,3 +1,4 @@
+// import RTK for query mapping
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 // TMBD KEY
