@@ -19,6 +19,7 @@ export default [
 		rules: {
 			'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
 			'react/react-in-jsx-scope': 'off',
+			'react/prop-types': 'off',
 		},
 	},
 ];
