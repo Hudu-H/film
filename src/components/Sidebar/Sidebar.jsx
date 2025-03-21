@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 
 //internal imports
 import useStyles from './styles';
+import { useGetGenresQuery } from '../../services/TMDB';
 
 //logos
 const blueLogo = 'https://fontmeme.com/permalink/250228/0991b8c9865596562beba546572aab28.png';
@@ -57,6 +58,8 @@ const demoCategories = [
 const Sidebar = ({ setMobileOpen }) => {
 	const theme = useTheme();
 	const classes = useStyles();
+	const { data, isFetching } = useGetGenresQuery();
+	console.log(data);
 
 	return (
 		<>
@@ -84,16 +87,22 @@ const Sidebar = ({ setMobileOpen }) => {
 			<Divider />
 			<List>
 				<ListSubheader>Genres</ListSubheader>
-				{demoCategories.map(({ lable, value }) => (
-					<Link key={value} className={classes.links} to="/">
-						<ListItem onClick={() => {}} button>
-							{/* <ListItemIcon>
+				{isFetching ? (
+					<Box display="flex" justifyContent="center">
+						<CircularProgress />
+					</Box>
+				) : (
+					data.genres.map(({ name, id }) => (
+						<Link key={name} className={classes.links} to="/">
+							<ListItem onClick={() => {}} button>
+								{/* <ListItemIcon>
 								<img src={redLogo} height={30} className={classes.genreImage} />
 							</ListItemIcon> */}
-							<ListItemText primary={lable} />
-						</ListItem>
-					</Link>
-				))}
+								<ListItemText primary={name} />
+							</ListItem>
+						</Link>
+					))
+				)}
 			</List>
 		</>
 	);
