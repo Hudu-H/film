@@ -5,7 +5,6 @@ import useStyles from './styles';
 
 const Movie = ({ movie, i }) => {
 	const classess = useStyles();
-	console.log(movie, i);
 
 	return (
 		<Grid2 item xs={12} sm={6} md={4} lg={3} xl={2} className={classess.movie}>
