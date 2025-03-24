@@ -6,12 +6,19 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // internal imports
 import useStyles from './styles';
+import { searchMovie } from '../../features/currentGenreOrCategory';
 
 const Search = () => {
 	const [query, setQuery] = useState('');
 	const classes = useStyles();
+	const dispatch = useDispatch();
 
-	const handleKeyDown = () => {};
+	// dispatch handleKeyDown
+	const handleKeyDown = (event) => {
+		if (event.key === 'Enter') {
+			dispatch(searchMovie(query));
+		}
+	};
 
 	return (
 		<div className={classes.searchContainer}>
