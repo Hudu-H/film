@@ -10,8 +10,14 @@ import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 // define movies comp
 const Movies = () => {
 	const [page, setPage] = useState(1);
-	const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory);
-	const { data, isFetching, error } = useGetMoviesQuery({ genreIdOrCategoryName, page });
+	const { genreIdOrCategoryName, searchQuery } = useSelector(
+		(state) => state.currentGenreOrCategory
+	);
+	const { data, isFetching, error } = useGetMoviesQuery({
+		genreIdOrCategoryName,
+		page,
+		searchQuery,
+	});
 
 	// data loading state
 	if (isFetching) {
