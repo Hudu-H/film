@@ -21,12 +21,14 @@ const Search = () => {
 				value={query}
 				variant="standard"
 				slotProps={{
-					className: classes.input,
-					startAdornment: (
-						<InputAdornment position="start">
-							<SearchIcon />
-						</InputAdornment>
-					),
+					input: {
+						className: classes.input,
+						startAdornment: (
+							<InputAdornment position="start">
+								<SearchIcon />
+							</InputAdornment>
+						),
+					},
 				}}
 			/>
 		</div>
