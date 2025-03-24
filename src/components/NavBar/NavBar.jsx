@@ -7,12 +7,13 @@ import { useTheme } from '@mui/styles';
 // internal imports
 import useStyles from './styles';
 import { Search, Sidebar } from '..';
+import { fetchToken } from '../../utils';
 
 const NavBar = () => {
 	const [mobileOpen, setMobileOpen] = useState(false);
 	const isMobile = useMediaQuery('(max-width:600px)');
 	const theme = useTheme();
-	const isAuthenticated = true;
+	const isAuthenticated = false;
 	const classes = useStyles();
 
 	return (
@@ -38,7 +39,7 @@ const NavBar = () => {
 					{!isMobile && <Search />}
 					<div>
 						{!isAuthenticated ? (
-							<Button color="inherit" onClick={() => {}}>
+							<Button color="inherit" onClick={fetchToken}>
 								Login &nbsp; <AccountCircle />
 							</Button>
 						) : (
