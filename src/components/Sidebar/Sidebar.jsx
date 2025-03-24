@@ -12,10 +12,13 @@ import {
 } from '@mui/material';
 import { useTheme } from '@mui/styles';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 //internal imports
 import useStyles from './styles';
 import { useGetGenresQuery } from '../../services/TMDB';
+import genreIcons from '../../assets/genres';
+import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 
 //logos
 const blueLogo = 'https://fontmeme.com/permalink/250228/0991b8c9865596562beba546572aab28.png';
@@ -23,34 +26,16 @@ const redLogo = 'https://fontmeme.com/permalink/250228/e66c4f5f6e7088308cce5c6ad
 
 const categories = [
 	{
-		lable: 'Popular',
+		label: 'Popular',
 		value: 'popular',
 	},
 	{
-		lable: 'Top Rated',
+		label: 'Top Rated',
 		value: 'top_rated',
 	},
 	{
-		lable: 'Upcoming',
+		label: 'Upcoming',
 		value: 'upcoming',
-	},
-];
-const demoCategories = [
-	{
-		lable: 'Action',
-		value: 'action',
-	},
-	{
-		lable: 'Horror',
-		value: 'horror',
-	},
-	{
-		lable: 'Comedy',
-		value: 'comedy',
-	},
-	{
-		lable: 'Animation',
-		value: 'animation',
 	},
 ];
 
@@ -59,7 +44,8 @@ const Sidebar = ({ setMobileOpen }) => {
 	const theme = useTheme();
 	const classes = useStyles();
 	const { data, isFetching } = useGetGenresQuery();
-	console.log(data);
+	const dispatch = useDispatch();
+	const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory);
 
 	return (
 		<>
@@ -73,13 +59,19 @@ const Sidebar = ({ setMobileOpen }) => {
 			<Divider />
 			<List>
 				<ListSubheader>Categories</ListSubheader>
-				{categories.map(({ lable, value }) => (
+				{categories.map(({ label, value }) => (
 					<Link key={value} className={classes.links} to="/">
-						<ListItem onClick={() => {}} button>
-							{/* <ListItemIcon>
-								<img src={redLogo} height={30} className={classes.genreImage} />
-							</ListItemIcon> */}
-							<ListItemText primary={lable} />
+						<ListItem onClick={() => dispatch(selectGenreOrCategory(value))} button>
+							{
+								<ListItemIcon>
+									<img
+										src={genreIcons[label.toLowerCase()]}
+										height={30}
+										className={classes.genreImage}
+									/>
+								</ListItemIcon>
+							}
+							<ListItemText primary={label} />
 						</ListItem>
 					</Link>
 				))}
@@ -94,10 +86,14 @@ const Sidebar = ({ setMobileOpen }) => {
 				) : (
 					data.genres.map(({ name, id }) => (
 						<Link key={name} className={classes.links} to="/">
-							<ListItem onClick={() => {}} button>
-								{/* <ListItemIcon>
-								<img src={redLogo} height={30} className={classes.genreImage} />
-							</ListItemIcon> */}
+							<ListItem onClick={() => dispatch(selectGenreOrCategory(id))} button>
+								<ListItemIcon>
+									<img
+										src={genreIcons[name.toLowerCase()]}
+										height={30}
+										className={classes.genreImage}
+									/>
+								</ListItemIcon>
 								<ListItemText primary={name} />
 							</ListItem>
 						</Link>

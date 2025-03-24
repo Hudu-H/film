@@ -1,0 +1,36 @@
+import React, { useState, useEffect } from 'react';
+import { TextField, InputAdornment } from '@mui/material';
+import { Search as SearchIcon } from '@mui/icons-material';
+import { useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+// internal imports
+import useStyles from './styles';
+
+const Search = () => {
+	const [query, setQuery] = useState('');
+	const classes = useStyles();
+
+	const handleKeyDown = () => {};
+
+	return (
+		<div className={classes.searchContainer}>
+			<TextField
+				onKeyDown={handleKeyDown}
+				onChange={(e) => setQuery(e.target.value)}
+				value={query}
+				variant="standard"
+				slotProps={{
+					className: classes.input,
+					startAdornment: (
+						<InputAdornment position="start">
+							<SearchIcon />
+						</InputAdornment>
+					),
+				}}
+			/>
+		</div>
+	);
+};
+
+export default Search;
