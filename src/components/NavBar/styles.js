@@ -2,6 +2,7 @@ import { makeStyles } from '@mui/styles';
 
 const drawerWidth = 240;
 
+// comp styles
 export default makeStyles((theme) => ({
 	toolbar: {
 		display: 'flex',

@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import App from './components/App';
 import store from './app/store';
 
-//define theme
+//define theme for color toggle
 const theme = createTheme({});
 
 // root compo

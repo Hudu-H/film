@@ -9,6 +9,7 @@ import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 
 // define movies comp
 const Movies = () => {
+	// hooks
 	const [page, setPage] = useState(1);
 	const { genreIdOrCategoryName, searchQuery } = useSelector(
 		(state) => state.currentGenreOrCategory

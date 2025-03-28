@@ -5,7 +5,9 @@ import Grid2 from '@mui/material/Grid2';
 import useStyles from './styles';
 import { Movie } from '..';
 
+// movie-list comp
 const MovieList = ({ movies }) => {
+	// define classses
 	const classes = useStyles();
 
 	return (

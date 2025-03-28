@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// general category endpoints
 export const genreOrCategory = createSlice({
 	name: 'genreOrCategory',
 	initialState: {
@@ -18,6 +19,7 @@ export const genreOrCategory = createSlice({
 	},
 });
 
+// actions
 export const { selectGenreOrCategory, searchMovie } = genreOrCategory.actions;
 
 export default genreOrCategory.reducer;

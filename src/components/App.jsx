@@ -6,6 +6,7 @@ import { CssBaseline } from '@mui/material';
 import { Actors, MovieInformation, Movies, Profile, NavBar } from './';
 import useStyles from './styles';
 
+// app comp
 const App = () => {
 	const classes = useStyles();
 
