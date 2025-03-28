@@ -9,7 +9,9 @@ import useStyles from './styles';
 import { Search, Sidebar } from '..';
 import { fetchToken } from '../../utils';
 
+// nav comp
 const NavBar = () => {
+	// hooks
 	const [mobileOpen, setMobileOpen] = useState(false);
 	const isMobile = useMediaQuery('(max-width:600px)');
 	const theme = useTheme();

@@ -8,7 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import useStyles from './styles';
 import { searchMovie } from '../../features/currentGenreOrCategory';
 
+// search comp
 const Search = () => {
+	// hooks
 	const [query, setQuery] = useState('');
 	const classes = useStyles();
 	const dispatch = useDispatch();

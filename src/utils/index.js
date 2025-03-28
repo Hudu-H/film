@@ -13,6 +13,8 @@ export const fetchToken = async () => {
 	try {
 		const { data } = await moviesApi.get('/authentication/token/new');
 
+		// console.log(data);
+
 		const token = data.request_token;
 
 		if (data.success) {

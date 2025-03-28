@@ -38,5 +38,5 @@ export const tmdbApi = createApi({
 	}),
 });
 
-// export movies queries
+// export movies queries as hooks
 export const { useGetGenresQuery, useGetMoviesQuery } = tmdbApi;

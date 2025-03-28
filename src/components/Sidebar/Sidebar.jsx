@@ -39,8 +39,9 @@ const categories = [
 	},
 ];
 
-// sidebar comp
+// sidebar comp TODO: fix props
 const Sidebar = ({ setMobileOpen }) => {
+	// hooks
 	const theme = useTheme();
 	const classes = useStyles();
 	const { data, isFetching } = useGetGenresQuery();

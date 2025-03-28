@@ -1,5 +1,6 @@
 import { makeStyles } from '@mui/styles';
 
+// comp styles
 export default makeStyles((theme) => ({
 	movie: {
 		padding: '10px',
