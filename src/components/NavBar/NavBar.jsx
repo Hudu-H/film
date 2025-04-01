@@ -1,22 +1,53 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppBar, Toolbar, IconButton, Drawer, Avatar, Button, useMediaQuery } from '@mui/material';
 import { Menu, Brightness4, Brightness7, AccountCircle } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/styles';
+import { useDispatch, useSelector } from 'react-redux';
 
 // internal imports
 import useStyles from './styles';
 import { Search, Sidebar } from '..';
-import { fetchToken } from '../../utils';
+import { fetchToken, moviesApi, createSessionId } from '../../utils';
+import { setUser, userSelector } from '../../features/auth';
 
 // nav comp
 const NavBar = () => {
 	// hooks
 	const [mobileOpen, setMobileOpen] = useState(false);
 	const isMobile = useMediaQuery('(max-width:600px)');
+	const { user, isAuthenticated } = useSelector(userSelector);
 	const theme = useTheme();
-	const isAuthenticated = false;
+	const dispatch = useDispatch();
 	const classes = useStyles();
+
+	console.log(user);
+
+	//fetch token
+	const token = localStorage.getItem('request_token');
+	const sessionIdFromLocalStorage = localStorage.getItem('session_id');
+
+	useEffect(() => {
+		const logInUser = async () => {
+			if (token) {
+				if (sessionIdFromLocalStorage) {
+					console.log(1);
+					const { data: userData } = await moviesApi.get(
+						`/account?session_id=${sessionIdFromLocalStorage}`
+					);
+					dispatch(setUser(userData));
+				} else {
+					console.log(2);
+					const sessionId = await createSessionId();
+					const { data: userData } = await moviesApi.get(`/account?session_id=${sessionId}`);
+
+					dispatch(setUser(userData));
+				}
+			}
+		};
+
+		logInUser;
+	}, [token]);
 
 	return (
 		<>
