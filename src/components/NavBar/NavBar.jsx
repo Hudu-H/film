@@ -14,16 +14,16 @@ import { setUser, userSelector } from '../../features/auth';
 // nav comp
 const NavBar = () => {
 	// hooks
+	const { isAuthenticated, user } = useSelector(userSelector);
 	const [mobileOpen, setMobileOpen] = useState(false);
 	const isMobile = useMediaQuery('(max-width:600px)');
-	const { user, isAuthenticated } = useSelector(userSelector);
 	const theme = useTheme();
 	const dispatch = useDispatch();
 	const classes = useStyles();
 
 	console.log(user);
 
-	//fetch token
+	//fetch token & session ID
 	const token = localStorage.getItem('request_token');
 	const sessionIdFromLocalStorage = localStorage.getItem('session_id');
 
@@ -46,7 +46,7 @@ const NavBar = () => {
 			}
 		};
 
-		logInUser;
+		logInUser();
 	}, [token]);
 
 	return (
