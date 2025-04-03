@@ -1,10 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-// assignment: fetch and display user name or ID from redux store
-// display in profile component
+// internal imports
+import { userSelector } from '../../features/auth';
 
 const Profile = () => {
-	return <div>Profile</div>;
+	const { user } = useSelector(userSelector);
+	console.log(user);
+	return <div>Profile - {user.username}</div>;
 };
 
 export default Profile;
