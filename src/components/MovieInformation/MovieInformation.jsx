@@ -52,7 +52,18 @@ const MovieInformation = () => {
 
 	return (
 		<Grid2 container className={classes.containerSpaceAround}>
-			test
+			<Grid2 item sm={12} lg={4}>
+				<img
+					className={classes.poster}
+					src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
+					alt={data?.title}
+				/>
+			</Grid2>
+			<Grid2 item container direction="column" lg={7}>
+				<Typography variant="h3" align="center" gutterBottom>
+					{data?.title} ({data.release_date.split('-')[0]})
+				</Typography>
+			</Grid2>
 		</Grid2>
 	);
 };
