@@ -26,10 +26,12 @@ import axios from 'axios';
 
 // internal imports
 import { useGetMovieQuery } from '../../services/TMDB';
+import useStyles from './styles';
 
 const MovieInformation = () => {
 	const { id } = useParams();
 	const { data, isFetching, error } = useGetMovieQuery(id);
+	const classes = useStyles();
 
 	// edge cases
 	if (isFetching) {
@@ -48,7 +50,11 @@ const MovieInformation = () => {
 		);
 	}
 
-	return <div>MovieInformation {id}</div>;
+	return (
+		<Grid2 container className={classes.containerSpaceAround}>
+			test
+		</Grid2>
+	);
 };
 
 export default MovieInformation;
