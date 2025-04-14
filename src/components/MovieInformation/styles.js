@@ -1,6 +1,6 @@
 import { Padding } from '@mui/icons-material';
 import { makeStyles } from '@mui/styles';
-import { height } from '@mui/system';
+import { display, height, width } from '@mui/system';
 
 // root or general comp styles
 export default makeStyles((theme) => ({
@@ -43,7 +43,8 @@ export default makeStyles((theme) => ({
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		[theme.breakpoints.down('md')]: {
+		textDecoration: 'none',
+		[theme.breakpoints.down('sm')]: {
 			Padding: '0.5rem 1rem',
 		},
 	},
@@ -53,5 +54,13 @@ export default makeStyles((theme) => ({
 		maxWidth: '7em',
 		height: '8em',
 		objectFit: 'cover',
+	},
+	buttonsContainer: {
+		display: 'flex',
+		justifyContent: 'space-between',
+		width: '100%',
+		[theme.breakpoints.down('sm')]: {
+			flexDirection: 'column',
+		},
 	},
 }));
