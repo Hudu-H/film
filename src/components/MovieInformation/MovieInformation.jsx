@@ -54,6 +54,18 @@ const MovieInformation = () => {
 		);
 	}
 
+	// is movie favorited
+	const isMovieFavorited = false;
+
+	// is movie watchlisted
+	const isMovieWatchlisted = false;
+
+	// add movie to favorites
+	const addToFavorites = () => {};
+
+	// add movie to watchlist
+	const addToWatchlist = () => {};
+
 	return (
 		<Grid2 container className={classes.containerSpaceAround}>
 			<Grid2 item sm={12} lg={4}>
@@ -148,6 +160,44 @@ const MovieInformation = () => {
 									endIcon={<Language />}
 								>
 									Website
+								</Button>
+								<Button
+									rel="noopener noreferrer"
+									target="_blank"
+									href={`https://www.imdb.com/title/${data?.imdb_id}`}
+									endIcon={<MovieIcon />}
+								>
+									IMDB
+								</Button>
+								<Button onClick={() => {}} href="#" endIcon={<Theaters />}>
+									Trailers
+								</Button>
+							</ButtonGroup>
+						</Grid2>
+						<Grid2 item xs={12} sm={6} className={classes.buttonsContainer}>
+							<ButtonGroup variant="outlined" size="medium">
+								<Button
+									onClick={addToFavorites}
+									endIcon={isMovieFavorited ? <FavoriteBorderOutlined /> : <Favorite />}
+								>
+									{isMovieFavorited ? 'Unfavorited' : 'Favorite'}
+								</Button>
+								<Button
+									onClick={addToWatchlist}
+									endIcon={isMovieWatchlisted ? <Remove /> : <PlusOne />}
+								>
+									watchlist
+								</Button>
+								<Button endIcon={<ArrowBack />} sx={{ borderColor: 'primary.main' }}>
+									<Typography
+										to="/"
+										component={Link}
+										variant="subtitle2"
+										color="inherit"
+										style={{ textDecoration: 'none' }}
+									>
+										Back
+									</Typography>
 								</Button>
 							</ButtonGroup>
 						</Grid2>
