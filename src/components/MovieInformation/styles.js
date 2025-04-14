@@ -1,5 +1,6 @@
 import { Padding } from '@mui/icons-material';
 import { makeStyles } from '@mui/styles';
+import { height } from '@mui/system';
 
 // root or general comp styles
 export default makeStyles((theme) => ({
@@ -45,5 +46,12 @@ export default makeStyles((theme) => ({
 		[theme.breakpoints.down('md')]: {
 			Padding: '0.5rem 1rem',
 		},
+	},
+	castImage: {
+		borderRadius: '10px',
+		width: '100%',
+		maxWidth: '7em',
+		height: '8em',
+		objectFit: 'cover',
 	},
 }));
