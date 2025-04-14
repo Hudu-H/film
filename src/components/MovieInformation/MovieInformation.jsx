@@ -101,6 +101,58 @@ const MovieInformation = () => {
 						</Link>
 					))}
 				</Grid2>
+				<Typography variant="h5" gutterBottom style={{ marginTop: '10px' }}>
+					Overview
+				</Typography>
+				<Typography style={{ marginBottom: '2rem' }}>{data?.overview}</Typography>
+				<Typography gutterBottom variant="h5">
+					Top Cast
+				</Typography>
+				<Grid2 item container spacing={2}>
+					{data &&
+						data?.credits?.cast
+							?.map(
+								(character, i) =>
+									character.profile_path && (
+										<Grid2
+											item
+											key={i}
+											xs={4}
+											md={2}
+											component={Link}
+											to={`/actors/${character.id}`}
+											style={{ textDecoration: 'none' }}
+										>
+											<img
+												className={classes.castImage}
+												src={`https://image.tmdb.org/t/p/w500/${character.profile_path}`}
+												alt={character.name}
+											/>
+											<Typography color="textPrimary">{character?.name}</Typography>
+											<Typography color="textSecondary">
+												{character.character.split('/')[0]}
+											</Typography>
+										</Grid2>
+									)
+							)
+							.slice(0, 8)}
+				</Grid2>
+				<Grid2 item container style={{ marginTop: '2rem' }}>
+					<div className={classes.buttonsContainer}>
+						<Grid2 item xs={12} sm={6} className={classes.buttonsContainer}>
+							<ButtonGroup variant="outlined" size="small">
+								<Button
+									rel="noopener noreferrer"
+									target="_blank"
+									href={data?.homepage}
+									endIcon={<Language />}
+								>
+									Website
+								</Button>
+							</ButtonGroup>
+						</Grid2>
+					</div>
+				</Grid2>
 			</Grid2>
 		</Grid2>
 	);
