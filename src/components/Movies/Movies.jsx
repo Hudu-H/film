@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Box, CircularProgress, useMediaQuery, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, CircularProgress, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 
 // internal imports
 import { useGetMoviesQuery } from '../../services/TMDB';
 import { MovieList } from '..';
-import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 
 // define movies comp
 const Movies = () => {

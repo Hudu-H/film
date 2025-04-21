@@ -7,7 +7,6 @@ import {
 	CircularProgress,
 	Box,
 	Grid2,
-	useMediaQuery,
 	Rating,
 } from '@mui/material';
 import {
@@ -20,7 +19,7 @@ import {
 	Remove,
 	ArrowBack,
 } from '@mui/icons-material';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 // import axios from 'axios';
 // import { useSelector, useDispatch } from 'react-redux';

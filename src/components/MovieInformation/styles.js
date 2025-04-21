@@ -1,6 +1,4 @@
-import { Padding } from '@mui/icons-material';
 import { makeStyles } from '@mui/styles';
-import { display, height, width } from '@mui/system';
 
 // root or general comp styles
 export default makeStyles((theme) => ({
