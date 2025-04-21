@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
 	Modal,
 	Typography,
@@ -41,6 +41,7 @@ const MovieInformation = () => {
 	});
 	const classes = useStyles();
 	const dispatch = useDispatch();
+	const [open, setOpen] = useState(false);
 
 	// edge cases
 	if (isFetching) {
@@ -174,7 +175,7 @@ const MovieInformation = () => {
 								>
 									IMDB
 								</Button>
-								<Button onClick={() => {}} href="#" endIcon={<Theaters />}>
+								<Button onClick={() => setOpen(true)} href="#" endIcon={<Theaters />}>
 									Trailers
 								</Button>
 							</ButtonGroup>
@@ -219,6 +220,22 @@ const MovieInformation = () => {
 					<Box>Sorry nothing was foound.</Box>
 				)}
 			</Box>
+			<Modal
+				closeAfterTransition
+				open={open}
+				className={classes.modal}
+				onClose={() => setOpen(false)}
+			>
+				{data?.videos?.results?.length > 0 && (
+					<iframe
+						className={classes.video}
+						autoPlay
+						title="trailer"
+						allow="autoPlay"
+						src={`https://www.youtube.com/embed/${data.videos.results[0].key}`}
+					/>
+				)}
+			</Modal>
 		</Grid2>
 	);
 };
