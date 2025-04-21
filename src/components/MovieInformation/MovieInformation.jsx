@@ -22,18 +22,23 @@ import {
 } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 // import { useSelector, useDispatch } from 'react-redux';
 
 // internal imports
-import { useGetMovieQuery } from '../../services/TMDB';
+import { useGetMovieQuery, useGetRecommendationsQuery } from '../../services/TMDB';
 import useStyles from './styles';
 import genreIcons from '../../assets/genres';
 import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
+import { MovieList } from '..';
 
 const MovieInformation = () => {
 	const { id } = useParams();
 	const { data, isFetching, error } = useGetMovieQuery(id);
+	const { data: recommendations } = useGetRecommendationsQuery({
+		list: 'recommendations',
+		movie_id: id,
+	});
 	const classes = useStyles();
 	const dispatch = useDispatch();
 
@@ -204,6 +209,16 @@ const MovieInformation = () => {
 					</div>
 				</Grid2>
 			</Grid2>
+			<Box marginTop="5rem" width="100%">
+				<Typography align="center" variant="h3" gutterBottom>
+					Movie recommendations
+				</Typography>
+				{recommendations ? (
+					<MovieList movies={recommendations} numberOfMovies={12} />
+				) : (
+					<Box>Sorry nothing was foound.</Box>
+				)}
+			</Box>
 		</Grid2>
 	);
 };
