@@ -6,19 +6,16 @@ import { ArrowBack } from '@mui/icons-material';
 // internal imports
 import { useGetActorsInfoQuery, useGetMoviesByActorIdQuery } from '../../services/TMDB';
 import useStyles from './styles';
-import { MovieList } from '..';
+import { MovieList, Pagination } from '..';
 
 const Actors = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
-	const page = 1;
+	const [page, setPage] = useState(1);
 
 	const { data, isFetching, error } = useGetActorsInfoQuery(id);
 	const { data: movies } = useGetMoviesByActorIdQuery({ id, page });
 	const classes = useStyles();
-
-	console.log(movies);
-	// define goBack funct
 
 	// edge cases
 	if (isFetching) {
@@ -83,6 +80,7 @@ const Actors = () => {
 				<Typography variant="h2" align="center" gutterBottom>
 					Movies
 					{movies && <MovieList movies={movies} numberOfMovies={12} />}
+					<Pagination currentPage={page} setPage={setPage} totalPages={movies?.total_pages} />
 				</Typography>
 			</Box>
 		</>
