@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, CircularProgress, Typography } from '@mui/material';
+import { Box, CircularProgress, Typography, useMediaQuery } from '@mui/material';
 import { useSelector } from 'react-redux';
 
 // internal imports
@@ -18,6 +18,9 @@ const Movies = () => {
 		page,
 		searchQuery,
 	});
+	const lg = useMediaQuery((theme) => theme.breakpoints.only('lg'));
+
+	const numberOfMovies = lg ? 16 : 18;
 
 	// data loading state
 	if (isFetching) {
@@ -43,7 +46,7 @@ const Movies = () => {
 	if (error) return 'Unfortunately an error occured.';
 	return (
 		<div>
-			<MovieList movies={data} />
+			<MovieList movies={data} numberOfMovies={numberOfMovies} />
 			<Pagination currentPage={page} setPage={setPage} totalPages={data.total_pages} />
 		</div>
 	);

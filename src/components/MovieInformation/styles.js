@@ -17,12 +17,12 @@ export default makeStyles((theme) => ({
 		width: '80%',
 		[theme.breakpoints.down('md')]: {
 			width: '50%',
-			height: '350px',
+			// height: '350px',
 			margin: '0 auto',
 		},
 		[theme.breakpoints.down('sm')]: {
 			width: '100%',
-			height: '350px',
+			// height: '350px',
 			margin: '0 auto',
 			marginBottom: '30px',
 		},
