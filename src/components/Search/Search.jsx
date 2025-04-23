@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 // internal imports
 import useStyles from './styles';
 import { searchMovie } from '../../features/currentGenreOrCategory';
+import { useLocation } from 'react-router-dom';
 
 // search comp
 const Search = () => {
@@ -14,6 +15,7 @@ const Search = () => {
 	const [query, setQuery] = useState('');
 	const classes = useStyles();
 	const dispatch = useDispatch();
+	const location = useLocation();
 
 	// dispatch handleKeyDown
 	const handleKeyDown = (event) => {
@@ -21,6 +23,9 @@ const Search = () => {
 			dispatch(searchMovie(query));
 		}
 	};
+
+	//hide search bar if on a movie info
+	if (location.pathname != '/') return null;
 
 	return (
 		<div className={classes.searchContainer}>
