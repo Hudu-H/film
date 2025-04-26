@@ -47,7 +47,6 @@ const MovieInformation = () => {
 		sessionId: localStorage.getItem('session_id'),
 		page: 1,
 	});
-	console.log(favoriteMovies);
 	const { data: watchlistMovies } = useGetListQuery({
 		listName: 'watchlist/movies',
 		accountId: user.id,
@@ -63,11 +62,11 @@ const MovieInformation = () => {
 
 	// to track a favorited or watchlisted movie
 	useEffect(() => {
-		setIsMovieFavorited(!favoriteMovies?.results?.find((movie) => movie?.id === data?.id));
+		setIsMovieFavorited(!!favoriteMovies?.results?.find((movie) => movie?.id === data?.id));
 	}, [favoriteMovies, data]);
 
 	useEffect(() => {
-		setIsMovieWatchlisted(!watchlistMovies?.results?.find((movie) => movie?.id === data?.id));
+		setIsMovieWatchlisted(!!watchlistMovies?.results?.find((movie) => movie?.id === data?.id));
 	}, [watchlistMovies, data]);
 
 	// edge cases
@@ -90,7 +89,7 @@ const MovieInformation = () => {
 	// add movie to favorites, by making api calls to tmdb account
 	const addToFavorites = async () => {
 		await axios.post(
-			`https://api.themoviedb.org/3/aacount/${user.id}/favorite?api_key=${
+			`https://api.themoviedb.org/3/account/${user.id}/favorite?api_key=${
 				import.meta.env.VITE_TMDB_KEY
 			}&session_id=${localStorage.getItem('session_id')}`,
 			{
@@ -106,7 +105,7 @@ const MovieInformation = () => {
 	// add movie to watchlist, by making api calls to tmdb account
 	const addToWatchlist = async () => {
 		await axios.post(
-			`https://api.themoviedb.org/3/aacount/${user.id}/watchlist?api_key=${
+			`https://api.themoviedb.org/3/account/${user.id}/watchlist?api_key=${
 				import.meta.env.VITE_TMDB_KEY
 			}&session_id=${localStorage.getItem('session_id')}`,
 			{
