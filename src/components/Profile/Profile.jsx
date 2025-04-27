@@ -5,11 +5,28 @@ import { ExitToApp } from '@mui/icons-material';
 
 // internal imports
 import { userSelector } from '../../features/auth';
+import { useGetListQuery } from '../../services/TMDB';
+import { RatedCards } from '..';
 
 const Profile = () => {
 	const { user } = useSelector(userSelector);
+	const { data: favoriteMovies, refetch: refetchFavrotieMovies } = useGetListQuery({
+		listName: 'favorite/movies',
+		accountId: user.id,
+		sessionId: localStorage.getItem('session_id'),
+		page: 1,
+	});
+	const { data: watchlistMovies, refetch: refetchWatchlistMovies } = useGetListQuery({
+		listName: 'watchlist/movies',
+		accountId: user.id,
+		sessionId: localStorage.getItem('session_id'),
+		page: 1,
+	});
 
-	const favouriteMovies = [];
+	useEffect(() => {
+		refetchFavrotieMovies();
+		refetchWatchlistMovies();
+	}, []);
 
 	const logout = () => {
 		localStorage.clear();
@@ -26,10 +43,13 @@ const Profile = () => {
 					Logout &nbsp; <ExitToApp />
 				</Button>
 			</Box>
-			{!favouriteMovies.length ? (
+			{!favoriteMovies?.results?.length && !watchlistMovies?.results?.lenghth ? (
 				<Typography variant="h5">Add favourites or watchlist some movies.</Typography>
 			) : (
-				<Box>Favourite Movies</Box>
+				<Box>
+					<RatedCards title="Favorite Movies" data={favoriteMovies} />
+					<RatedCards title="watchlist" data={watchlistMovies} />
+				</Box>
 			)}
 		</Box>
 	);
