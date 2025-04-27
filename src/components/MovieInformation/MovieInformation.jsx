@@ -88,34 +88,42 @@ const MovieInformation = () => {
 
 	// add movie to favorites, by making api calls to tmdb account
 	const addToFavorites = async () => {
-		await axios.post(
-			`https://api.themoviedb.org/3/account/${user.id}/favorite?api_key=${
-				import.meta.env.VITE_TMDB_KEY
-			}&session_id=${localStorage.getItem('session_id')}`,
-			{
-				media_type: 'movie',
-				media_id: id,
-				favorite: !isMovieFavorited,
-			}
-		);
+		try {
+			await axios.post(
+				`https://api.themoviedb.org/3/account/${user.id}/favorite?api_key=${
+					import.meta.env.VITE_TMDB_KEY
+				}&session_id=${localStorage.getItem('session_id')}`,
+				{
+					media_type: 'movie',
+					media_id: id,
+					favorite: !isMovieFavorited,
+				}
+			);
 
-		setIsMovieFavorited((prev) => !prev);
+			setIsMovieFavorited((prev) => !prev);
+		} catch (error) {
+			console.error('Error uppdating favorites:', error);
+		}
 	};
 
 	// add movie to watchlist, by making api calls to tmdb account
 	const addToWatchlist = async () => {
-		await axios.post(
-			`https://api.themoviedb.org/3/account/${user.id}/watchlist?api_key=${
-				import.meta.env.VITE_TMDB_KEY
-			}&session_id=${localStorage.getItem('session_id')}`,
-			{
-				media_type: 'movie',
-				media_id: id,
-				favorite: !isMovieWatchlisted,
-			}
-		);
+		try {
+			await axios.post(
+				`https://api.themoviedb.org/3/account/${user.id}/watchlist?api_key=${
+					import.meta.env.VITE_TMDB_KEY
+				}&session_id=${localStorage.getItem('session_id')}`,
+				{
+					media_type: 'movie',
+					media_id: id,
+					watchlist: !isMovieWatchlisted,
+				}
+			);
 
-		setIsMovieWatchlisted((prev) => !prev);
+			setIsMovieWatchlisted((prev) => !prev);
+		} catch (error) {
+			console.error('Error updating watchlist:', error);
+		}
 	};
 
 	return (
