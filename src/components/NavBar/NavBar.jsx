@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { AppBar, Toolbar, IconButton, Drawer, Avatar, Button, useMediaQuery } from '@mui/material';
 import { Menu, Brightness4, Brightness7, AccountCircle } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
@@ -10,6 +10,7 @@ import useStyles from './styles';
 import { Search, Sidebar } from '..';
 import { fetchToken, moviesApi, createSessionId } from '../../utils';
 import { setUser, userSelector } from '../../features/auth';
+import { ColorModeContext } from '../../utils/ToggleColorMode';
 
 // nav comp
 const NavBar = () => {
@@ -24,6 +25,8 @@ const NavBar = () => {
 	//fetch token & session ID
 	const token = localStorage.getItem('request_token');
 	const sessionIdFromLocalStorage = localStorage.getItem('session_id');
+
+	const colorMode = useContext(ColorModeContext);
 
 	useEffect(() => {
 		const logInUser = async () => {
@@ -62,7 +65,7 @@ const NavBar = () => {
 							<Menu />
 						</IconButton>
 					)}
-					<IconButton color="inherit" sx={{ ml: 1 }} onClick={() => {}}>
+					<IconButton color="inherit" sx={{ ml: 1 }} onClick={colorMode.toggleColorMode}>
 						{theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
 					</IconButton>
 					{!isMobile && <Search />}
