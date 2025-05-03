@@ -14,15 +14,15 @@ export default makeStyles((theme) => ({
 	poster: {
 		boxShadow: '0.5em 1em 1em rgb(64, 64, 80)',
 		borderRadius: '20px',
-		width: '100%',
+		width: '80%',
 		[theme.breakpoints.down('md')]: {
 			width: '50%',
-			// height: '350px',
+			height: '350px',
 			margin: '0 auto',
 		},
 		[theme.breakpoints.down('sm')]: {
 			width: '100%',
-			// height: '350px',
+			height: '350px',
 			margin: '0 auto',
 			marginBottom: '30px',
 		},
