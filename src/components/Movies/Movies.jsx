@@ -20,7 +20,7 @@ const Movies = () => {
 	});
 	const lg = useMediaQuery((theme) => theme.breakpoints.only('lg'));
 
-	const numberOfMovies = lg ? 16 : 18;
+	const numberOfMovies = lg ? 17 : 19;
 
 	// data loading state
 	if (isFetching) {
@@ -47,7 +47,7 @@ const Movies = () => {
 	return (
 		<div>
 			<FeaturedMovie movie={data.results[0]} />
-			<MovieList movies={data} numberOfMovies={numberOfMovies} />
+			<MovieList movies={data} numberOfMovies={numberOfMovies} excludeFirst />
 			<Pagination currentPage={page} setPage={setPage} totalPages={data.total_pages} />
 		</div>
 	);

@@ -18,7 +18,7 @@ const FeaturedMovie = ({ movie }) => {
 					component="img"
 					alt={movie.title}
 					image={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
-					className={classes.CardMedia}
+					className={classes.cardMedia}
 					title={movie.title}
 				/>
 				<Box padding="20px">

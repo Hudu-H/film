@@ -176,7 +176,7 @@ const MovieInformation = () => {
 					Overview
 				</Typography>
 				<Typography style={{ marginBottom: '2rem' }}>{data?.overview}</Typography>
-				<Typography gutterBottom variant="h5">
+				<Typography variant="h5" gutterBottom>
 					Top Cast
 				</Typography>
 				<Grid2 item container spacing={2}>

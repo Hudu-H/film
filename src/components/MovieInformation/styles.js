@@ -14,7 +14,7 @@ export default makeStyles((theme) => ({
 	poster: {
 		boxShadow: '0.5em 1em 1em rgb(64, 64, 80)',
 		borderRadius: '20px',
-		width: '80%',
+		width: '100%',
 		[theme.breakpoints.down('md')]: {
 			width: '50%',
 			// height: '350px',
@@ -43,7 +43,7 @@ export default makeStyles((theme) => ({
 		alignItems: 'center',
 		textDecoration: 'none',
 		[theme.breakpoints.down('sm')]: {
-			Padding: '0.5rem 1rem',
+			padding: '0.5rem 1rem',
 		},
 	},
 	castImage: {
