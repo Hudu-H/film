@@ -19,6 +19,7 @@ import useStyles from './styles';
 import { useGetGenresQuery } from '../../services/TMDB';
 import genreIcons from '../../assets/genres';
 import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
+import { Flag } from '@mui/icons-material';
 
 //logos
 const blueLogo = 'https://fontmeme.com/permalink/250228/0991b8c9865596562beba546572aab28.png';
@@ -47,6 +48,10 @@ const Sidebar = ({ setMobileOpen }) => {
 	const { data, isFetching } = useGetGenresQuery();
 	const dispatch = useDispatch();
 	const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory);
+
+	useEffect(() => {
+		setMobileOpen(false);
+	}, [genreIdOrCategoryName]);
 
 	return (
 		<>
