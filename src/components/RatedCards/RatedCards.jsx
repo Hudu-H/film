@@ -5,6 +5,7 @@ import { Box, Typography } from '@mui/material';
 import useStyles from './styles';
 import { Movie } from '..';
 
+// rated cards component
 const RatedCards = ({ title, data }) => {
 	const classes = useStyles();
 

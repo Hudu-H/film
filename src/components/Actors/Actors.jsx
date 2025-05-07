@@ -8,6 +8,7 @@ import { useGetActorsInfoQuery, useGetMoviesByActorIdQuery } from '../../service
 import useStyles from './styles';
 import { MovieList, Pagination } from '..';
 
+// actors page
 const Actors = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
