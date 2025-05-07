@@ -1,5 +1,6 @@
 import { makeStyles } from '@mui/styles';
 
+// movie container styles
 export default makeStyles((theme) => ({
 	moviesContianer: {
 		display: 'flex',
